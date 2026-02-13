@@ -1,0 +1,24 @@
+volumes:
+    logs:
+        driver: local
+    var:
+        driver: local
+
+services:
+    slim:
+        build: .
+        working_dir: /var/www
+        command: php -S 0.0.0.0:8080 -t public
+        environment:
+            docker: "true"
+        ports:
+            - "8080:8080"
+        volumes:
+            - .:/var/www:cached
+            - var:/var/www/var
+            - logs:/var/www/logs
+        healthcheck:
+            test: [ "CMD", "php", "-r", "exit(extension_loaded('pdo') && in_array('sqlite', PDO::getAvailableDrivers()) ? 0 : 1);" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5

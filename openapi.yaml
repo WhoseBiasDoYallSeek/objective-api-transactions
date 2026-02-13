@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Obj API — Transactions / API de Transações
+  version: 1.0.0
+  description: |
+    Small banking API used for interview — accounts and transactions with idempotency support.
+    API bancária pequena usada em entrevista — contas e transações com suporte a idempotência.
+servers:
+  - url: http://localhost:8080
+paths:
+  /conta:
+    post:
+      summary: Create an account / Criar conta
+      responses:
+        '201':
+          description: Account created / Conta criada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+    get:
+      summary: Get account / Obter conta
+      responses:
+        '200':
+          description: Account data / Dados da conta
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+  /transacao:
+    post:
+      summary: Create a transaction (idempotent) / Criar transação (idempotente)
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          schema:
+            type: string
+          required: false
+          description: |
+            Unique key to prevent duplicate processing.
+            Chave única para prevenir processamento duplicado.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      responses:
+        '201':
+          description: Transaction applied / Transação aplicada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Validation error / Erro de validação
+        '409':
+          description: Idempotency key conflict (same key, different payload) / Conflito de idempotência (mesma chave, payload diferente)
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        saldo:
+          type: number
+      required: [id, saldo]
+    TransactionRequest:
+      type: object
+      properties:
+        tipo:
+          type: string
+          enum: [D, C, P]
+        valor:
+          type: number
+      required: [tipo, valor]

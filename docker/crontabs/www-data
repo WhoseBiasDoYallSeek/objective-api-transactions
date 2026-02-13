@@ -1,0 +1,2 @@
+# Run idempotency prune every hour
+0 * * * * php /var/www/scripts/prune_idempotency.php >> /var/www/logs/prune.log 2>&1
