@@ -56,7 +56,7 @@ Endpoints / Endpoints
 
 ---
 
-## OpenAPI / Contrato
+## OpenAPI
 
 A small `openapi.yaml` is included in the repository root. Use it to import to Postman/Insomnia or generate documentation.
 
