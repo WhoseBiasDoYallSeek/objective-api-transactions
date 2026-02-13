@@ -33,9 +33,11 @@ O container inclui um cron leve que executa `scripts/prune_idempotency.php` a ca
 ## API — quick reference (EN / PT-BR)
 
 It's necessary to use Accept: application/json HTTP Header to run the endpoints.
+
 É necessário usar o HTTP Header Accept: application/json para rodar os endpoints.
 
 The application only accept json requests.
+
 A aplicação aceita somente requests json.
 
 Endpoints / Endpoints
