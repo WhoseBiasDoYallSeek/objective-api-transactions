@@ -1,6 +1,6 @@
 # Objective API — Transactions (Slim 4)
 
-This repository is a small tecnical challenge project implementing a banking API (accounts + transactions) with idempotency and tests.
+This repository is a small technical challenge project implementing a banking API (accounts + transactions) with idempotency and tests.
 
 Este repositório é um pequeno projeto para desafio técnico que implementa uma API bancária (contas + transações) com idempotência e testes.
 
