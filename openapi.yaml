@@ -3,8 +3,8 @@ info:
   title: Obj API — Transactions / API de Transações
   version: 1.0.0
   description: |
-    Small banking API used for interview — accounts and transactions with idempotency support.
-    API bancária pequena usada em entrevista — contas e transações com suporte a idempotência.
+    Small banking API used for a technical challenge — accounts and transactions with idempotency support.
+    Uma pequeno projeto para desafio técnico que implementa uma API bancária.
 servers:
   - url: http://localhost:8080
 paths:
